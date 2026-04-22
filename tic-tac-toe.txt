@@ -1,0 +1,6 @@
+Log:
+1. Created a Square component with classname='square' (so it matches what is given in styles.css).
+2. Created a Board component that creates and renders a 3x3 grid of Squares. Also it sets up the game with handleClick() (after a square is clicked on), calculateWinner() (determine if the game ends), and a status (to show player instructions). Board uses useState() to update the values of the squares, and setToX uses useState to update after user turns (setToX is used for determining player turn, X/O).
+3. Tested the game so far to see if it works, and it works.
+
+4. 

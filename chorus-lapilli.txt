@@ -1,0 +1,6 @@
+1. Added isAdjacent() (checks if two cells are adjacent to each other).
+2. Added selectedSquare state to Board using useState() (tracks which piece the current player has selected).
+3. Rewrote handleClick() to handle two branches; when the player has fewer than 3 pieces, behavior is the same as tic-tac-toe. Otherwise the first click selects a piece and the second click moves it to a valid adjacent empty square. If the second click is invalid it resets the selection without changing player turns.
+4. Added the center rule: if the current player has a piece at index 4, the proposed move is simulated first and reset unless it either wins the game or vacates the center square.
+5. Updated Square to accept an isSelected prop, also added a 'square.selected' CSS class to show the player the piece they selected.
+6. Tested the game: placement works, movement phase correctly allows only adjacent moves, center rule blocks normal moves when center is occupied, and win detection works.

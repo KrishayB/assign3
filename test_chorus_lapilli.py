@@ -143,6 +143,33 @@ class TestChorusLapilli(unittest.TestCase):
 
 # =========================== [ADD YOUR TESTS HERE] ===========================
 
+    def test_no_overwrite(self):
+        '''Check that clicking a filled square does not overwrite it.'''
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        self.assertTileIs(tiles[0], self.SYMBOL_X)
+        tiles[0].click()
+        self.assertTileIs(tiles[0], self.SYMBOL_X)
+
+    def test_alternating_turns(self):
+        '''Check that turns alternate between X and O.'''
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        self.assertTileIs(tiles[0], self.SYMBOL_X)
+        tiles[1].click()
+        self.assertTileIs(tiles[1], self.SYMBOL_O)
+    
+    def test_no_moves_after_win(self):
+        '''Check that moves are blocked after a player wins.'''
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()  # X
+        tiles[3].click()  # O
+        tiles[1].click()  # X
+        tiles[4].click()  # O
+        tiles[2].click()  # X wins
+        tiles[5].click()  # should be blocked
+        self.assertTileIs(tiles[5], self.SYMBOL_BLANK)
+
     def test_new_board_empty(self):
         '''Check if a new game always starts with an empty board.'''
         tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
